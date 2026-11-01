@@ -1,4 +1,6 @@
-from .standard import *
+from .optics import *
 from . import science
 from . import *
-from .standard import init_sympy
+
+#__all__ = ["science","optics", "sympy"]
+#from .standard import init_sympy
