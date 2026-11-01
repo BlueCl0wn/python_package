@@ -1,7 +1,7 @@
 import numpy as np
 import sympy as sp
 
-r, a = sp.symbols("r, a", real=True)
+r, a, f = sp.symbols("r, a, f", real=True)
 def vec(a:float, r: float) -> sp.MutableDenseMatrix:
     return sp.Matrix([[a],
                       [r]])
