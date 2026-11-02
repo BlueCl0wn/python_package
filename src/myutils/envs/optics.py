@@ -1,4 +1,17 @@
-import numpy as np
+"""SymPy ray-optics toolbox (ABCD matrices, convention: out = M @ (a, r)).
+
+Matrices:
+    vec(a, r)             ray vector (a, r)^T
+    free_path(d, n=1)     free-space propagation over distance d in medium n
+    ideal_lens(f) = thin_lens(f)
+    curved_surface(R, n1, n2)
+    thick_lens(R1, R2, n, d)
+
+Symbols: r, a, f
+
+from sympy import *
+"""
+
 from sympy import *
 
 r, a, f = symbols("r, a, f", real=True)
@@ -24,17 +37,24 @@ def curved_surface(R: float, n1: float, n2: float) -> MutableDenseMatrix:
 
 
 def thick_lens(R1: float, R2: float, n: float, d: float) -> MutableDenseMatrix:
-    EFL = (
-        (n - 1) * (S(1) / R1 - S(1) / R2) + (n - 1) ** 2 * d / (n * R1 * R2)
-    ) ** (-1)
+    EFL = ((n - 1) * (S(1) / R1 - S(1) / R2) + (n - 1) ** 2 * d / (n * R1 * R2)) ** (-1)
     return Matrix(
         [[1 + (n - 1) / n * d / R2, -(EFL ** (-1))], [d / n, 1 - (n - 1) / n * d / R1]]
     )
 
 
-__all__ = [
-    name for name in globals()
-    if not name.startswith("_")
-]
-
 init_printing()
+
+
+def api() -> None:
+    """Print the module docstring and full help for this module."""
+
+    print(__doc__)
+    # help(sys.modules[__name__])
+
+
+__all__ = [name for name in globals() if not name.startswith("_")]
+
+if __name__ == "__main__":
+    # print docs when env is started with "ipython -i -m myutils.envs.optics
+    api()
