@@ -133,6 +133,7 @@ from myutils.envs.science import *
 np   # NumPy
 cp   # SciPy
 unc  # uncertainties
+ps   # pint
 ```
 
 This is particularly useful in interactive sessions where these libraries are frequently needed.
@@ -185,7 +186,4 @@ The package currently depends on:
 - [SciPy](https://scipy.org/) – scientific computing
 - [SymPy](https://www.sympy.org/) – symbolic mathematics
 - [uncertainties](https://pythonhosted.org/uncertainties/) – calculations with uncertainty propagation
-
-## License
-
-See [LICENSE](LICENSE) for licensing information.
+- [Pint](https://pint.readthedocs.io/) – physical quantities and unit conversions.
